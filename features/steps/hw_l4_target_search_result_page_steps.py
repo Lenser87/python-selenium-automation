@@ -1,10 +1,11 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 from behave import when, then
 from time import sleep
 
 
 SEARCH_RESULT_HEADER = (By.XPATH, "//div[@data-test='resultsHeading']")
-ADD_BTN = (By.CSS_SELECTOR, "button#addToCartButtonOrTextIdFor12954148")
+ADD_BTN = (By.CSS_SELECTOR, "button#addToCartButtonOrTextIdFor13397813")
 ADD_BTN_INSIDE = (By.XPATH, "//button[@data-test='orderPickupButton']")
 CARD_BTN = (By.XPATH, "//a[@href='/cart']")
 
@@ -18,9 +19,20 @@ def verify_search_result(context, expected_item):
 
 @when("Add coffee")
 def add_coffee(context):
-    context.driver.find_element(*ADD_BTN).click()
-    sleep(5)
-    context.driver.find_element(*ADD_BTN_INSIDE).click()
-    sleep(5)
-    context.driver.find_element(*CARD_BTN).click()
-    sleep(5)
+    context.wait.until(
+        EC.element_to_be_clickable(ADD_BTN),
+        message='ADD_BTN is not clickable'
+    ).click()
+    #context.driver.find_element(*ADD_BTN).click()
+
+    context.wait.until(
+        EC.element_to_be_clickable(ADD_BTN_INSIDE),
+        message='ADD_BTN_INSIDE is not clickable'
+    ).click()
+    #context.driver.find_element(*ADD_BTN_INSIDE).click()
+
+    context.wait.until(
+        EC.element_to_be_clickable(CARD_BTN),
+        message='CARD_BTN is not clickable'
+    ).click()
+    #context.driver.find_element(*CARD_BTN).click()
