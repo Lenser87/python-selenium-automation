@@ -12,9 +12,9 @@ CARD_BTN = (By.XPATH, "//a[@href='/cart']")
 
 @then("Verify search result are shown for {expected_item}")
 def verify_search_result(context, expected_item):
-    actual_text = context.driver.find_element(*SEARCH_RESULT_HEADER).text
-    sleep(6)
-    assert expected_item in actual_text, f'ERROR!!! {expected_item} not in {actual_text}'
+    #actual_text = context.driver.find_element(*SEARCH_RESULT_HEADER).text
+    #assert expected_item in actual_text, f'ERROR!!! {expected_item} not in {actual_text}'
+    context.app.search_results_page.verify_search_result(expected_item)
 
 
 @when("Add coffee")
