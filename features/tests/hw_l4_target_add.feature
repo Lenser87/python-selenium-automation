@@ -4,5 +4,6 @@ Feature: add tests
   Scenario: User can add a coffee
     Given Open Target main page
     When Search for coffee
-    When Add coffee
+    When Clicking coffee
+    When Add product
     Then Verify coffee in the cart
