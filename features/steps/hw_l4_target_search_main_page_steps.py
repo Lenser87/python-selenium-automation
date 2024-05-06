@@ -17,3 +17,4 @@ def search_product(context, item):
 @when("Clicking on Sign in")
 def click_sign_in(context):
     context.app.header.click_sign_in()
+
